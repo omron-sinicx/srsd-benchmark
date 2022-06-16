@@ -1,18 +1,20 @@
 # Rethinking Symbolic Regression Datasets and Benchmarks for Scientific Discovery
 This is the official code repository of ["Rethinking Symbolic Regression Datasets and Benchmarks for Scientific Discovery"]
-(#citation). This work revisits datasets and evaluation criteria for Symbolic Regression, 
-a task of expressing given data using mathematical equations, specifically focused on its potential for scientific discovery. 
+(https://github.com/omron-sinicx/srsd-benchmark#citation). 
+This work revisits datasets and evaluation criteria for Symbolic Regression, a task of expressing given data 
+using mathematical equations, specifically focused on its potential for scientific discovery. 
 Focused on a set of formulas used in the existing datasets based on Feynman Lectures on Physics, 
 we recreate 120 datasets to discuss the performance of symbolic regression for scientific discovery (SRSD). 
 For each of the 120 SRSD datasets, we carefully review the properties of the formula and its variables 
 to design reasonably realistic sampling range of values so that our new SRSD datasets can be used for 
 evaluating the potential of SRSD such as whether or not a SR method con (re)discover physical laws from such datasets. 
-As an evaluation metric, we also propose to use normalized edit distances between a predicted equation and the ground-truth equation trees. 
-While existing metrics are either binary or errors between the target values and a SR model's predicted values for 
-a given input, normalized edit distances evaluate a sort of similarity between the ground-truth and predicted equation trees. 
-We have conducted experiments on our new SRSD datasets using five state-of-the-art SR methods in SRBench and a simple 
-baseline based on a recent Transformer architecture. The results show that we provide a more realistic performance evaluation 
-and open up a new machine learning-based approach for scientific discovery.
+As an evaluation metric, we also propose to use normalized edit distances between a predicted equation 
+and the ground-truth equation trees. While existing metrics are either binary or errors between the target values and 
+a SR model's predicted values for a given input, normalized edit distances evaluate a sort of similarity between 
+the ground-truth and predicted equation trees. We have conducted experiments on our new SRSD datasets using five 
+state-of-the-art SR methods in SRBench and a simple baseline based on a recent Transformer architecture. 
+The results show that we provide a more realistic performance evaluation and open up a new machine learning-based 
+approach for scientific discovery.
 
 ## Setup 
 We used pipenv for a Python virtual environment.
