@@ -1,6 +1,5 @@
 # Rethinking Symbolic Regression Datasets and Benchmarks for Scientific Discovery
-This is the official code repository of ["Rethinking Symbolic Regression Datasets and Benchmarks for Scientific Discovery"]
-(https://github.com/omron-sinicx/srsd-benchmark#citation). 
+This is the official code repository of ["Rethinking Symbolic Regression Datasets and Benchmarks for Scientific Discovery"](https://github.com/omron-sinicx/srsd-benchmark#citation). 
 This work revisits datasets and evaluation criteria for Symbolic Regression, a task of expressing given data 
 using mathematical equations, specifically focused on its potential for scientific discovery. 
 Focused on a set of formulas used in the existing datasets based on Feynman Lectures on Physics, 
