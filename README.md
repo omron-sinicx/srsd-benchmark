@@ -136,7 +136,8 @@ pipenv run python dataset_comparator.py \
 ## Symbolic Transformer baseline
 
 ### Pretraining
-You can skip this pretraining step if you use our pretrained model weights.
+You can skip this pretraining step if you use [our pretrained model checkpoint](https://github.com/omron-sinicx/srsd-benchmark/releases/tag/v0.1.0).
+
 ```shell
 pipenv run python symbolic-regression-for-mis/symbolic_regression.py --config ./configs/experiments/colab_pro/symbolic_transformer-pretraining.yaml --log ./symbolic-regression-for-mis/log/experiments/colab_pro/symbolic_transformer-pretraining.txt
 ```
