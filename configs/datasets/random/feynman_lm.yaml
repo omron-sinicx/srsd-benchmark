@@ -1,0 +1,8 @@
+output_dir: './resource/datasets/random_set/'
+output_ext: '.txt'
+sample_size: 10000
+vocab:
+  kwargs:
+    symbols: ['<SOS>', 'BiMul', 'c', 'Pow', 'sin', 'BiAdd', 'cos', 'exp', 'log', 'tan', 'tanh']
+    max_num_variables: 8
+    ignored_index: -255

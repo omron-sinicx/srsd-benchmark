@@ -1,0 +1,66 @@
+Bootstrap: docker
+From: python:3.7-buster
+Stage: spython-base
+
+%labels
+com.nvidia.volumes.needed="nvidia_driver"
+%post
+
+LC_ALL=C.UTF-8
+LANG=C.UTF-8
+
+PATH=/usr/local/nvidia/bin/:$PATH
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+
+# Tell nvidia-docker the driver spec that we need as well as to
+# use all available devices, which are mounted at /usr/local/nvidia.
+# The LABEL supports an older version of nvidia-docker, the env
+# variables a newer one.
+NVIDIA_VISIBLE_DEVICES=all
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+
+cd /
+
+# Install base packages.
+apt-get update --fix-missing && apt-get install -y \
+bzip2 \
+ca-certificates \
+curl \
+gcc \
+git \
+libc-dev \
+libglib2.0-0 \
+libsm6 \
+libxext6 \
+libxrender1 \
+wget \
+libevent-dev \
+build-essential && \
+rm -rf /var/lib/apt/lists/*
+
+apt-get update --fix-missing && apt install -y jq && \
+rm -rf /var/lib/apt/lists/*
+# RUN pip install torchdistill
+mkdir /opt/app/ -p
+cd /opt/app/
+git clone https://github.com/brendenpetersen/deep-symbolic-optimization.git
+cd /opt/app/deep-symbolic-optimization/
+pip install --upgrade pip
+pip install -r requirements.txt
+pip install -e ./dso
+mkdir ~/dataset/proposed/random_split/toy_set/train/ -p
+%files
+~/dataset/proposed/random_split/toy_set/train/* ~/dataset/proposed/random_split/toy_set/train/
+%environment
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
+export PATH=/usr/local/nvidia/bin/:$PATH
+export LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+export NVIDIA_VISIBLE_DEVICES=all
+export NVIDIA_DRIVER_CAPABILITIES=compute,utility
+%runscript
+cd /opt/app/deep-symbolic-optimization/
+exec /bin/bash "$@"
+%startscript
+cd /opt/app/deep-symbolic-optimization/
+exec /bin/bash "$@"

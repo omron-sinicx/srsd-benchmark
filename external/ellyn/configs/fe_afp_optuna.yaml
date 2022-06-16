@@ -1,0 +1,38 @@
+model:
+  output_dir: './fe_afp_optuna/'
+  optuna:
+    n_trials: 100
+    popsize:
+      low: 100
+      high: 1000
+    g:
+      low: 250
+      high: 2500
+    op_list:
+      choices: 
+        - ['n', 'v', '+', '-', '*', '/', 'exp', 'log', '2', '3', 'sqrt']
+        - ['n', 'v', '+', '-', '*', '/', 'exp', 'log', '2', '3', 'sqrt', 'sin', 'cos']
+    stop_threshold: 
+      low: 1.0e-10
+      high: 0.01
+  kwargs:
+    selection: 'afp'
+    lex_eps_global: False
+    lex_eps_dynamic: False
+    islands: False
+    num_islands: 10
+    island_gens: 100
+    verbosity: 1
+    print_data: False
+    elitism: True
+    pHC_on: True
+    prto_arch_on: True
+    max_len: 64
+    max_len_init: 20
+    time_limit: 7200
+    EstimateFitness: True
+    FE_pop_size: 100
+    FE_ind_size: 10
+    FE_train_size: 10
+    FE_train_gens: 10
+    FE_rank: True

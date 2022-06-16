@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+numpy = "*"
+pandas = "*"
+sympy = ">=1.10"
+
+[dev-packages]
+
+[requires]
+python_version = "3.7"

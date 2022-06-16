@@ -1,0 +1,299 @@
+FeynmanICh6Eq20:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh6Eq20a:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh6Eq20b:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh9Eq18:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh15Eq3t:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh15Eq3x:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh29Eq16:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh30Eq3:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh32Eq17:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh34Eq14:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh37Eq4:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh39Eq22:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh40Eq1:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh41Eq16:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh44Eq4:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh50Eq26:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIICh6Eq15a:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIICh6Eq15b:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIICh11Eq17:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIICh11Eq20:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIICh11Eq27:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIICh11Eq28:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIICh13Eq23:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIICh13Eq34:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIICh24Eq17:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIICh35Eq18:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIICh35Eq21:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIICh36Eq38:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIIICh4Eq33:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIIICh9Eq52:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIIICh10Eq19:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIIICh21Eq20:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanBonus1:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanBonus2:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanBonus3:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanBonus4:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanBonus5:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanBonus6:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanBonus7:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanBonus9:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanBonus10:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanBonus11:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanBonus12:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanBonus13:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanBonus14:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanBonus15:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanBonus16:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanBonus17:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanBonus19:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanBonus20:
+  output_dir: './resource/datasets/srsd/hard_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:

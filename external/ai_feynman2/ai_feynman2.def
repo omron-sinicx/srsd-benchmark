@@ -1,0 +1,80 @@
+Bootstrap: docker
+From: python:3.7-buster
+Stage: spython-base
+
+%files
+#./ai_feynman_runner.py /opt/app/AI-Feynman/
+#./S_run_aifeynman.py /opt/app/AI-Feynman/aifeynman/
+./ai_feynman_runner.py /opt/app/
+#./S_run_aifeynman.py /opt/app/
+%labels
+com.nvidia.volumes.needed="nvidia_driver"
+%post
+
+LC_ALL=C.UTF-8
+LANG=C.UTF-8
+
+PATH=/usr/local/nvidia/bin/:$PATH
+LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+
+# Tell nvidia-docker the driver spec that we need as well as to
+# use all available devices, which are mounted at /usr/local/nvidia.
+# The LABEL supports an older version of nvidia-docker, the env
+# variables a newer one.
+NVIDIA_VISIBLE_DEVICES=all
+NVIDIA_DRIVER_CAPABILITIES=compute,utility
+
+cd /
+
+# Install base packages.
+apt-get update --fix-missing && apt-get install -y \
+bzip2 \
+ca-certificates \
+csh \
+curl \
+gcc \
+gfortran \
+git \
+libc-dev \
+libglib2.0-0 \
+libsm6 \
+libxext6 \
+libxrender1 \
+wget \
+vim \
+libevent-dev \
+tmux \
+build-essential && \
+rm -rf /var/lib/apt/lists/*
+
+apt-get update --fix-missing && apt install -y jq && \
+rm -rf /var/lib/apt/lists/*
+
+# Install Python packages.
+pip install --upgrade pip
+pip install numpy matplotlib sympy==1.4 pandas scipy sortedcontainers
+
+# RUN pip install aifeynman
+cd /opt/app/
+git clone https://github.com/SJ001/AI-Feynman.git
+cd /opt/app/AI-Feynman/
+
+# Latest version as of Sep 10, 2021
+git reset --hard a05bc4a5be23d6eb3e1d0b2f7eb1ab5b78a920ad
+mv /opt/app/ai_feynman_runner.py /opt/app/AI-Feynman/
+#mv /opt/app/S_run_aifeynman.py /opt/app/AI-Feynman/aifeynman/
+chmod +777 /opt/app/AI-Feynman/*
+pip install -e .
+%environment
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
+export PATH=/usr/local/nvidia/bin/:$PATH
+export LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+export NVIDIA_VISIBLE_DEVICES=all
+export NVIDIA_DRIVER_CAPABILITIES=compute,utility
+%runscript
+cd /opt/app/AI-Feynman/
+exec /bin/bash "$@"
+%startscript
+cd /opt/app/AI-Feynman/
+exec /bin/bash "$@"

@@ -1,0 +1,9 @@
+numpy
+torchdistill>=0.3.2
+pandas
+jinja2
+zss
+graphviz
+transformers
+sympy>=1.10.1
+scikit-learn

@@ -1,0 +1,17 @@
+model:
+  output_dir: './gplearn_w_const/'
+  kwargs:
+    population_size: 1000
+    generations: 100
+    stopping_criteria: 1.0e-5
+    const_range: !!python/tuple [-1000.0, 1000.0]
+    p_crossover: 0.7
+    p_subtree_mutation: 0.1
+    p_hoist_mutation: 0.05
+    p_point_mutation: 0.1
+    warm_start: True
+    max_samples: 0.9
+    verbose: False
+    parsimony_coefficient: 0.01
+    function_set: ['add', 'mul', 'div', 'sqrt', 'sin', 'cos', 'tan', 'log']
+    n_jobs: -1

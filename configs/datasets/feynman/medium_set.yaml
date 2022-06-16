@@ -1,0 +1,239 @@
+FeynmanICh8Eq14:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh10Eq7:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh11Eq19:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh12Eq2:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh12Eq11:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh13Eq4:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh13Eq12:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh15Eq10:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh16Eq6:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh18Eq4:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh24Eq6:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh29Eq4:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh32Eq5:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh34Eq8:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh34Eq10:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh34Eq27:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh38Eq12:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh39Eq10:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh39Eq11:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh43Eq31:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh43Eq43:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanICh48Eq2:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIICh6Eq11:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIICh8Eq7:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIICh11Eq3:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIICh21Eq32:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIICh34Eq2:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIICh34Eq2a:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIICh34Eq29a:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIICh37Eq1:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIIICh4Eq32:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIIICh8Eq54:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIIICh13Eq18:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIIICh14Eq14:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIIICh15Eq12:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIIICh15Eq14:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIIICh17Eq37:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanIIICh19Eq51:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanBonus8:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
+
+FeynmanBonus18:
+  output_dir: './resource/datasets/srsd/medium_set/'
+  output_ext: '.txt'
+  sample_size: 10000
+  kwargs:
