@@ -90,7 +90,7 @@ If there are multiple trained models with different seeds and/or hyperparameters
 based on relative error on validation split like other methods in this repository.
 
 ```shell
-python model_selector.py --est ./dso_results/est_eq* \
+pipenv run python model_selector.py --est ./dso_results/est_eq* \
     --val ~/dataset/symbolic_regression/srsd-feynman_all/val/ \
     --output ./results/dso_models/
 ```
