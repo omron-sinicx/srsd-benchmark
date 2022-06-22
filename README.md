@@ -187,11 +187,12 @@ pipenv run python r2_evaluator.py \
 ```
 
 ## Citation
+[[Preprint](https://arxiv.org/abs/2206.10540)]  
 ```bibtex
 @article{matsubara2022rethinking,
   title={Rethinking Symbolic Regression Datasets and Benchmarks for Scientific Discovery},
   author={Matsubara, Yoshitomo and Chiba, Naoya and Igarashi, Ryo and Tatsunori, Taniai and Ushiku, Yoshitaka},
-  journal={arXiv preprint arXiv:...},
+  journal={arXiv preprint arXiv:2206.10540},
   year={2022}
 }
 ```
