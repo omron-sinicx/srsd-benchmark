@@ -67,7 +67,7 @@ for srsd_category in easy medium hard; do
 done
 ```
 
-## Existing symbolic regression baselines
+## Run existing symbolic regression baselines / your own model
 Follow the instruction in [external/README.md](./external)
 
 ## Analyze equations
@@ -87,7 +87,8 @@ pipenv run python eq_analyzer.py --name feynman -visualize --output ./eq_trees/
 ## Select the best model per dataset for DSO and AI Feynman
 Due to their original implementations, DSO and AI Feynman are difficult to work with optuna for hyperparameter tuning.
 If there are multiple trained models with different seeds and/or hyperparameters, select the best model per dataset 
-based on relative error on validation split like other methods in this repository.
+based on relative error on validation split like other methods in this repository.  
+e.g., DSO
 
 ```shell
 pipenv run python model_selector.py --est ./dso_results/est_eq* \
