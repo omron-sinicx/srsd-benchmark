@@ -19,6 +19,7 @@ def convert_pred_sequence_to_eqs(pred_sequences, prints_str=False):
 
         try:
             pred_eq = sympy.sympify(sympy_eq_str)
+            pred_eq = pred_eq.subs(1.0, 1)
         except:
             pred_eq = sympy.nan
         pred_eq_list.append(pred_eq)

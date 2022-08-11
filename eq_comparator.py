@@ -54,6 +54,7 @@ def load_eq_as_tree(pickle_file_path, decrements_idx=False, prints=True):
                 new_variables = tuple([Symbol(f'x{i - 1}') for i in var_indices])
                 for old_variable, new_variable in zip(old_variables, new_variables):
                     eq_sympy = eq_sympy.subs(old_variable, new_variable)
+            eq_sympy = eq_sympy.subs(1.0, 1)
     except TypeError as te:
         print(te)
         print(f'[{pickle_file_path}]')
