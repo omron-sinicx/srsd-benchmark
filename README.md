@@ -6,7 +6,7 @@ Focused on a set of formulas used in the existing datasets based on Feynman Lect
 we recreate 120 datasets to discuss the performance of symbolic regression for scientific discovery (SRSD). 
 For each of the 120 SRSD datasets, we carefully review the properties of the formula and its variables 
 to design reasonably realistic sampling range of values so that our new SRSD datasets can be used for 
-evaluating the potential of SRSD such as whether or not an SR method con (re)discover physical laws from such datasets. 
+evaluating the potential of SRSD such as whether or not an SR method can (re)discover physical laws from such datasets. 
 As an evaluation metric, we also propose to use normalized edit distances between a predicted equation 
 and the ground-truth equation trees. While existing metrics are either binary or errors between the target values and 
 an SR model's predicted values for a given input, normalized edit distances evaluate a sort of similarity between 
@@ -97,6 +97,10 @@ pipenv run python model_selector.py --est ./dso_results/est_eq* \
 ```
 
 ## Compute edit distance between estimated and ground-truth equations
+Both the estimated and ground-truth equations need to be "pickled" as sympy equations e.g., [sympy.sympify(eq_str)](https://github.com/omron-sinicx/srsd-benchmark/blob/main/external/gplearn/gp_runner.py#L83-L85) and [pickle the object](https://github.com/omron-sinicx/srsd-benchmark/blob/main/external/gplearn/gp_runner.py#L77-L80)  
+Mathematical operations available in [sympy](https://www.sympy.org/en/index.html) are supported, 
+and input variables should use sympy.Symbol(f'x{index}'), where `index` is integer and starts from 0.  
+(If your model uses input variable index starting from 1 like DSO, you can still use the expressions by adding `-dec_idx` to the following command.)
 
 1 by 1
 ```shell
