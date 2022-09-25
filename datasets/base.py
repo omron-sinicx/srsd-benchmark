@@ -71,7 +71,7 @@ class KnownEquation(object):
                (FLOAT32_MIN <= values) * (values <= FLOAT32_MAX) * (np.abs(values) >= FLOAT32_TINY)
 
     def create_dataset(self, sample_size, patience=10):
-        warnings.filterwarnings('error')
+        warnings.filterwarnings('ignore')
         assert len(self.sampling_objs) > 0, f'There should be at least one variable provided in `{self.sympy_eq}`'
         xs = [sampling_func(sample_size) for sampling_func in self.sampling_objs]
         y = self.eq_func(xs)
@@ -175,7 +175,7 @@ class KnownEquation(object):
 
     @classmethod
     def from_sympy_eq(cls, sympy_eq, sampling_objs, reindexes=True):
-        warnings.filterwarnings('error')
+        warnings.filterwarnings('ignore')
         variables = tuple(sympy_eq.free_symbols)
         if reindexes:
             new_variables = tuple([Symbol(f'x{i}') for i in range(len(variables))])
