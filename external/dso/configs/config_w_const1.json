@@ -60,7 +60,7 @@
     }
   },
   "experiment": {
-    "logdir": "/home/acd13769tm/workspace/symbolic-regression-for-mis/logs_w_const1",
+    "logdir": "./logs_w_const1",
     "seed": 1
   }
 }
