@@ -19,7 +19,7 @@ approach for scientific discovery.
 We used pipenv for a Python virtual environment.
 
 ```shell
-pipenv install --python 3.7
+pipenv install --python 3.8
 mkdir resource/ 
 ```
 
@@ -88,12 +88,14 @@ pipenv run python eq_analyzer.py --name feynman -visualize --output ./eq_trees/
 Due to their original implementations, DSO and AI Feynman are difficult to work with optuna for hyperparameter tuning.
 If there are multiple trained models with different seeds and/or hyperparameters, select the best model per dataset 
 based on relative error on validation split like other methods in this repository.  
+(If your model uses input variable index starting from 1 like DSO, you can still use the expressions by adding `-dec_idx` to the following command.)
 e.g., DSO
 
 ```shell
 pipenv run python model_selector.py --est ./dso_results/est_eq* \
     --val ~/dataset/symbolic_regression/srsd-feynman_all/val/ \
-    --output ./results/dso_models/
+    --output ./results/dso_models/ \
+    -dec_idx
 ```
 
 ## Compute edit distance between estimated and ground-truth equations

@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: python:3.7-buster
+From: python:3.8-buster
 Stage: spython-base
 
 %labels
