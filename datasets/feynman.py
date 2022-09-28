@@ -2755,7 +2755,7 @@ class FeynmanIIICh14Eq14(KnownEquation):
     - Num. Vars: 4
     - Vars:
         - x[0]: I_0 (float)
-        - x[1]: q (float)
+        - x[1]: q (float, positive)
         - x[2]: Volt (float)
         - x[3]: T (float, positive)
     - Constraints:
@@ -2766,7 +2766,7 @@ class FeynmanIIICh14Eq14(KnownEquation):
     def __init__(self, sampling_objs=None):
         if sampling_objs is None:
             sampling_objs = [
-                DefaultSampling(1.0e-3, 1.0e-1), DefaultSampling(1.0e-3, 1.0e-1), 
+                DefaultSampling(1.0e-3, 1.0e-1), DefaultSampling(1.0e-22, 1.0e-20, uses_negative=False),
                 DefaultSampling(1.0e-1, 1.0e1), DefaultSampling(1.0e1, 1.0e3, uses_negative=False)
             ]
 
