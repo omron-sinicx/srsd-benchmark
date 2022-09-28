@@ -2,7 +2,7 @@
 
 ## Setup pipenv
 ```shell
-pipenv install --python 3.7
+pipenv install --python 3.8
 ```
 
 ## Setup Docker / Singularity
