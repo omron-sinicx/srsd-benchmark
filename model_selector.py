@@ -15,6 +15,7 @@ def get_argparser():
     parser.add_argument('--val', required=True, help='validation dataset dir path')
     parser.add_argument('--est_delim', default='.txt', help='file name delimiter for estimated equation files')
     parser.add_argument('--val_delim', default='.txt', help='file name delimiter for validation dataset files')
+    parser.add_argument('-dec_idx', action='store_true', help='decrement variable indices for estimated equation(s)')
     parser.add_argument('--output', help='dir path to store the best model per dataset')
     return parser
 
@@ -66,17 +67,19 @@ def print_missing_keys(model_paths_dict, val_dataset_path_dict):
         print(val_key)
 
 
-def load_lambdified_model(model_file_path, num_variables):
+def load_lambdified_model(model_file_path, num_variables, decrements_idx):
     if os.path.getsize(model_file_path) == 0:
         print(f'`File size of {str(model_file_path)}` is zero')
         return None, None
 
     with open(model_file_path, 'rb') as fp:
         sympy_eq = pickle.load(fp)
-        old_variables = tuple([Symbol(f'x{i + 1}') for i in range(num_variables)])
         new_variables = tuple([Symbol(f'x{i}') for i in range(num_variables)])
-        for old_variable, new_variable in zip(old_variables, new_variables):
-            sympy_eq = sympy_eq.subs(old_variable, new_variable)
+        if decrements_idx:
+            old_variables = tuple([Symbol(f'x{i + 1}') for i in range(num_variables)])
+            for old_variable, new_variable in zip(old_variables, new_variables):
+                sympy_eq = sympy_eq.subs(old_variable, new_variable)
+
         variables = new_variables
         try:
             eq_func = lambdify(variables, sympy_eq, modules='numpy')
@@ -86,7 +89,7 @@ def load_lambdified_model(model_file_path, num_variables):
         return sympy_eq, lambda x: eq_func(*x).T
 
 
-def select_models(model_paths_dict, val_dataset_path_dict, output_dir_path):
+def select_models(model_paths_dict, val_dataset_path_dict, decrements_idx, output_dir_path):
     Path(output_dir_path).mkdir(parents=True, exist_ok=True)
     print_missing_keys(model_paths_dict, val_dataset_path_dict)
     print('\n[Selecting models...]')
@@ -99,7 +102,7 @@ def select_models(model_paths_dict, val_dataset_path_dict, output_dir_path):
         best_model_file_path = None
         best_sympy_eq = None
         for model_file_path in model_paths_dict.get(val_dataset_key, list()):
-            sympy_eq, eq_func = load_lambdified_model(model_file_path, num_variables)
+            sympy_eq, eq_func = load_lambdified_model(model_file_path, num_variables, decrements_idx)
             if sympy_eq is None or sympy_eq == sympy.nan or sympy_eq.is_number:
                 continue
 
@@ -125,7 +128,7 @@ def main(args):
     print(args)
     model_paths_dict = get_model_paths_dict(args.est, args.est_delim)
     val_dataset_path_dict = get_val_dataset_path_dict(args.val, args.val_delim)
-    select_models(model_paths_dict, val_dataset_path_dict, os.path.expanduser(args.output))
+    select_models(model_paths_dict, val_dataset_path_dict, args.dec_idx, os.path.expanduser(args.output))
 
 
 if __name__ == '__main__':

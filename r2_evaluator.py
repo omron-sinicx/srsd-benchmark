@@ -14,6 +14,7 @@ def get_argparser():
     parser.add_argument('--test', required=True, help='test dataset dir path')
     parser.add_argument('--est_delim', default='.txt', help='file name delimiter for estimated equation files')
     parser.add_argument('--test_delim', default='.txt', help='file name delimiter for test dataset files')
+    parser.add_argument('-dec_idx', action='store_true', help='decrement variable indices for estimated equation(s)')
     parser.add_argument('--r2thr', default=0.999, type=float, help='R2 score threshold')
     return parser
 
@@ -58,7 +59,7 @@ def print_missing_keys(model_paths_dict, test_dataset_path_dict):
         print(test_key)
 
 
-def load_lambdified_model(model_file_path, num_variables):
+def load_lambdified_model(model_file_path, num_variables, decrements_idx):
     if model_file_path is None:
         return None, None
 
@@ -68,10 +69,12 @@ def load_lambdified_model(model_file_path, num_variables):
 
     with open(model_file_path, 'rb') as fp:
         sympy_eq = pickle.load(fp)
-        old_variables = tuple([Symbol(f'x{i + 1}') for i in range(num_variables)])
         new_variables = tuple([Symbol(f'x{i}') for i in range(num_variables)])
-        for old_variable, new_variable in zip(old_variables, new_variables):
-            sympy_eq = sympy_eq.subs(old_variable, new_variable)
+        if decrements_idx:
+            old_variables = tuple([Symbol(f'x{i + 1}') for i in range(num_variables)])
+            for old_variable, new_variable in zip(old_variables, new_variables):
+                sympy_eq = sympy_eq.subs(old_variable, new_variable)
+
         variables = new_variables
         try:
             eq_func = lambdify(variables, sympy_eq, modules='numpy')
@@ -81,7 +84,7 @@ def load_lambdified_model(model_file_path, num_variables):
         return sympy_eq, lambda x: eq_func(*x).T if not sympy_eq.is_number else eq_func(*x)
 
 
-def evaluate(model_path_dict, test_dataset_path_dict, r2_score_threshold):
+def evaluate(model_path_dict, test_dataset_path_dict, decrements_idx, r2_score_threshold):
     print_missing_keys(model_path_dict, test_dataset_path_dict)
     r2_score_list = list()
     correct_flag_list = list()
@@ -92,7 +95,7 @@ def evaluate(model_path_dict, test_dataset_path_dict, r2_score_threshold):
         num_variables = test_samples.shape[1]
         test_xs = tuple([x.T for x in np.hsplit(test_samples, test_samples.shape[1])])
         model_file_path = model_path_dict.get(test_dataset_key, None)
-        sympy_eq, eq_func = load_lambdified_model(model_file_path, num_variables)
+        sympy_eq, eq_func = load_lambdified_model(model_file_path, num_variables, decrements_idx)
         if sympy_eq is None or sympy_eq == sympy.nan:
             print(f'No valid model file found for `{test_dataset_key}`')
             r2_score_list.append(None)
@@ -124,7 +127,7 @@ def main(args):
     print(args)
     model_path_dict = get_model_path_dict(args.est, args.est_delim)
     test_dataset_path_dict = get_test_dataset_path_dict(args.test, args.test_delim)
-    evaluate(model_path_dict, test_dataset_path_dict, args.r2thr)
+    evaluate(model_path_dict, test_dataset_path_dict, args.dec_idx, args.r2thr)
 
 
 if __name__ == '__main__':
