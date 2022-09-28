@@ -19,7 +19,7 @@ def convert_pred_sequence_to_eqs(pred_sequences, prints_str=False):
 
         try:
             pred_eq = sympy.sympify(sympy_eq_str)
-            pred_eq = pred_eq.subs(1.0, 1)
+            pred_eq = pred_eq.subs(sympy.pi, sympy.pi.evalf()).evalf().factor().simplify().subs(1.0, 1)
         except:
             pred_eq = sympy.nan
         pred_eq_list.append(pred_eq)
@@ -63,8 +63,8 @@ def compute_edit_distance(pred_eqs, true_eqs, normalizes=True):
 def compute_edit_distances(pred_eqs, true_eqs, normalizes=True):
     edit_dist_list = list()
     for pred_eq, true_eq in zip(pred_eqs, true_eqs):
-        pred_eq_tree = sympy2zss_module(pred_eq.evalf())
-        true_eq_tree = sympy2zss_module(true_eq.evalf())
+        pred_eq_tree = sympy2zss_module(pred_eq)
+        true_eq_tree = sympy2zss_module(true_eq)
         edit_dist = compute_distance(pred_eq_tree, true_eq_tree, normalizes)
         edit_dist_list.append(edit_dist)
     return edit_dist_list
