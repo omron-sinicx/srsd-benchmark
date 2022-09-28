@@ -5,6 +5,7 @@ from collections import OrderedDict
 from pathlib import Path
 
 import pandas as pd
+import sympy
 from sympy import Symbol
 
 from eq.conversion import sympy2zss_module
@@ -46,7 +47,7 @@ def get_est_gt_eq_pairs(est_eq_dir_path, est_delim, gt_eq_dir_path, gt_delim):
 
 def load_eq_as_tree(pickle_file_path, decrements_idx=False, prints=True):
     try:
-        with open(pickle_file_path, 'rb') as fp:
+        with open(pickle_file_path, 'rb') as fp, sympy.evaluate(False):
             eq_sympy = pickle.load(fp)
             if decrements_idx:
                 old_variables = sorted(list(eq_sympy.free_symbols), key=lambda x: int(str(x)[1:]))
@@ -54,7 +55,7 @@ def load_eq_as_tree(pickle_file_path, decrements_idx=False, prints=True):
                 new_variables = tuple([Symbol(f'x{i - 1}') for i in var_indices])
                 for old_variable, new_variable in zip(old_variables, new_variables):
                     eq_sympy = eq_sympy.subs(old_variable, new_variable)
-            eq_sympy = eq_sympy.subs(1.0, 1)
+        eq_sympy = eq_sympy.subs(sympy.pi, sympy.pi.evalf()).evalf().factor().simplify().subs(1.0, 1)
     except TypeError as te:
         print(te)
         print(f'[{pickle_file_path}]')
@@ -63,7 +64,7 @@ def load_eq_as_tree(pickle_file_path, decrements_idx=False, prints=True):
     if prints:
         print(f'[{pickle_file_path}]')
         print(f'Eq.: {eq_sympy}')
-    return sympy2zss_module(eq_sympy.evalf()), eq_sympy
+    return sympy2zss_module(eq_sympy), eq_sympy
 
 
 def compare_equation(est_eq_file_path, gt_eq_file_path, normalizes,
