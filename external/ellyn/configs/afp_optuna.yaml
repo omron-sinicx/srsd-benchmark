@@ -1,7 +1,10 @@
 model:
   output_dir: './afp_optuna/'
   optuna:
-    n_trials: 100
+    optimize:
+      n_trials: 100
+      timeout: 84600 # 60 * 60 * 23.5
+      n_jobs: -1
     popsize:
       low: 100
       high: 1000

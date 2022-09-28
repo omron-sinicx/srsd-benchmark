@@ -1,18 +1,21 @@
 model:
   output_dir: './gplearn_w_optuna/'
   optuna:
-    n_trials: 100
+    optimize:
+      n_trials: 100
+      timeout: 84600 # 60 * 60 * 23.5
+      n_jobs: -1
     population_size:
       low: 100
       high: 1000
     generations:
       low: 10
       high: 100
-    stopping_criteria: 
+    stopping_criteria:
       low: 1.0e-10
       high: 0.01
     const_range:
-      choices: 
+      choices:
         - !!python/none None
         - !!python/tuple [-1.0, 1.0]
         - !!python/tuple [-1.0e+1, 1.0e+1]
@@ -21,13 +24,13 @@ model:
         - !!python/tuple [-1.0e+4, 1.0e+4]
     warm_start:
       choices: [True, False]
-    max_samples: 
+    max_samples:
       low: 0.9
       high: 1.0
     parsimony_coefficient:
       low: 0.001
       high: 0.01
   kwargs:
-    function_set: ['neg', 'add', 'mul', 'div', 'sqrt', 'sin', 'cos', 'tan', 'atan', 'exp', 'log']
+    function_set: ['add', 'mul', 'div', 'sqrt', 'sin', 'cos', 'tan', 'log']
     verbose: 0
     n_jobs: -1

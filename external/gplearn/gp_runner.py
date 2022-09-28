@@ -15,9 +15,6 @@ from gplearn.genetic import SymbolicRegressor
 
 EXTRA_FUNC_DICT = {
     'exp': make_function(np.exp, 'exp', 1),
-    'asin': make_function(np.arcsin, 'asin', 1),
-    'acos': make_function(np.arccos, 'acos', 1),
-    'atan': make_function(np.arctan, 'atan', 1),
     'pow': make_function(np.power, 'pow', 2)
 }
 
@@ -30,9 +27,6 @@ STR2SYMPY = {
     'sin': sympy.sin,
     'cos': sympy.cos,
     'tan': sympy.tan,
-    'asin': sympy.asin,
-    'acos': sympy.acos,
-    'atan': sympy.atan,
     'add': lambda x, y : x + y,
     'sub': lambda x, y : x - y,
     'mul': lambda x, y : x * y,
@@ -108,11 +102,15 @@ def train(train_file_path, val_file_path, model_config, output_file_prefix):
 def train_with_optuna(train_file_path, val_file_path, model_config, output_file_prefix):
     train_samples, train_targets = load_dataset(train_file_path)
     val_samples, val_targets = load_dataset(val_file_path)
-    model_config['kwargs']['function_set'] = update_function_list(model_config['kwargs']['function_set'])
     optuna_config = model_config['optuna']
 
     def optuna_objective(trial):
         model_kwargs = model_config['kwargs'].copy()
+        if 'function_set' in optuna_config:
+            function_set_kwargs = optuna_config['function_set']
+            function_set_kwargs['choices'] = [update_function_list(fl) for fl in function_set_kwargs['choices']]
+            model_kwargs['function_set'] = trial.suggest_categorical('function_set', **optuna_config['function_set'])
+
         if 'population_size' in optuna_config:
             model_kwargs['population_size'] = trial.suggest_int('population_size', **optuna_config['population_size'])
 
@@ -153,7 +151,7 @@ def train_with_optuna(train_file_path, val_file_path, model_config, output_file_
 
     start_time = timeit.timeit()
     study = optuna.create_study(direction='minimize')
-    study.optimize(optuna_objective, n_trials=optuna_config['n_trials'])
+    study.optimize(optuna_objective, **optuna_config['optimize'])
     train_time = timeit.timeit() - start_time
     print(f'Training time: {train_time}')
     best_param_kwargs = study.best_trial.params

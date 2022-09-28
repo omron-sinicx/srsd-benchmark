@@ -116,7 +116,7 @@ def train_with_optuna(train_file_path, val_file_path, model_config, output_file_
 
     start_time = timeit.timeit()
     study = optuna.create_study(direction='minimize')
-    study.optimize(optuna_objective, n_trials=optuna_config['n_trials'])
+    study.optimize(optuna_objective, **optuna_config['optimize'])
     train_time = timeit.timeit() - start_time
     print(f'Training time: {train_time}')
     best_param_kwargs = study.best_trial.params
