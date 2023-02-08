@@ -1,7 +1,3 @@
-"""
-Comments about equations are based on those made by Naoya Chiba
-"""
-
 from collections import OrderedDict
 
 import numpy as np
