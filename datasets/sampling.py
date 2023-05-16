@@ -26,7 +26,7 @@ def default_positive_sampling(sample_size, min_value=1.0e-1, max_value=1.0e1):
 
 
 @register_sampling_func
-def default_negative_sampling(sample_size, min_value=-1.0e1, max_value=-1.0e-1):
+def default_negative_sampling(sample_size, min_value=1.0e-1, max_value=1.0e1):
     # x ~ U(-10.0, -0.1)
     log10_min = np.log10(abs(min_value))
     log10_max = np.log10(abs(max_value))
