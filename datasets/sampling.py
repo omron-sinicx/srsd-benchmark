@@ -28,8 +28,8 @@ def default_positive_sampling(sample_size, min_value=1.0e-1, max_value=1.0e1):
 @register_sampling_func
 def default_negative_sampling(sample_size, min_value=-1.0e1, max_value=-1.0e-1):
     # x ~ U(-10.0, -0.1)
-    log10_min = -np.log10(abs(min_value))
-    log10_max = -np.log10(abs(max_value))
+    log10_min = np.log10(abs(min_value))
+    log10_max = np.log10(abs(max_value))
     return -10.0 ** np.random.uniform(log10_min, log10_max, size=sample_size)
 
 
@@ -52,7 +52,7 @@ def simple_positive_sampling(sample_size, min_value=0.0, max_value=1.0):
 
 
 @register_sampling_func
-def simple_negative_sampling(sample_size, min_value=-1.0, max_value=0.0):
+def simple_negative_sampling(sample_size, min_value=0.0, max_value=1.0):
     # x ~ U(-1, 0.0)
     return -np.random.uniform(min_value, max_value, size=sample_size)
 
@@ -76,7 +76,7 @@ def integer_positive_sampling(sample_size, min_value=1, max_value=100):
 
 
 @register_sampling_func
-def integer_negative_sampling(sample_size, min_value=-100, max_value=-1):
+def integer_negative_sampling(sample_size, min_value=1, max_value=100):
     # x ~ U(-100, -1)
     return -np.random.randint(min_value, max_value, size=sample_size)
     
