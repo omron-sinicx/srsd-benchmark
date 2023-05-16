@@ -4,7 +4,6 @@ import pickle
 import random
 
 import numpy as np
-import pandas
 import sympy
 import torch
 from torch._six import string_classes
@@ -104,8 +103,7 @@ class SymbolicRegressionDataset(Dataset):
         self.tabular_data_file_path = os.path.expanduser(tabular_data_file_path)
         dtype = DTYPE_DICT.get(dtype_str, np.float32)
         delimiter = '\t' if self.tabular_data_file_path.endswith('.tsv') else ' '
-        tabular_data = \
-            pandas.read_csv(self.tabular_data_file_path, delimiter=delimiter, header=None).to_numpy(dtype=dtype)
+        tabular_data = np.loadtxt(tabular_data_file_path, delimiter=delimiter, dtype=dtype)
         self.samples = tabular_data[:, :-1]
         self.targets = tabular_data[:, -1]
         if true_eq_file_path is None:
@@ -155,8 +153,12 @@ class EquationTreeDataset(Dataset):
         self.target_sequence_list = list()
         for tabular_data_file_path, true_eq_file_path in zip(self.tabular_data_file_paths, self.true_eq_file_paths):
             delimiter = '\t' if tabular_data_file_path.endswith('.tsv') else ' '
-            tabular_data = pandas.read_csv(tabular_data_file_path,
-                                           delimiter=delimiter, header=None).to_numpy(dtype=dtype)
+            try:
+                tabular_data = np.loadtxt(tabular_data_file_path, delimiter=delimiter, dtype=dtype)
+            except:
+                logger.info(f'Skipping `{tabular_data_file_path}` due to some error while loading')
+                continue
+
             if normalizes:
                 num_org_samples = tabular_data.shape[0]
                 tabular_data = normalize_tabular_data(tabular_data)

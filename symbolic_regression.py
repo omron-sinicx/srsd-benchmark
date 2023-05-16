@@ -234,7 +234,6 @@ def main(args):
 
     distributed, device_ids = init_distributed_mode(args.world_size, args.dist_url)
     logger.info(args)
-    cudnn.benchmark = True
     set_seed(args.seed)
     config = yaml_util.load_yaml_file(os.path.expanduser(args.config))
     device = torch.device(args.device)

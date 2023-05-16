@@ -67,7 +67,7 @@ class KnownEquation(object):
         raise NotImplementedError()
 
     def check_if_valid(self, values):
-        return ~np.isnan(values) * ~np.isinf(values) * \
+        return ~np.isnan(values) * ~np.isinf(values) * ~np.iscomplex(values) * \
                (FLOAT32_MIN <= values) * (values <= FLOAT32_MAX) * (np.abs(values) >= FLOAT32_TINY)
 
     def create_dataset(self, sample_size, patience=10):
@@ -176,7 +176,7 @@ class KnownEquation(object):
     @classmethod
     def from_sympy_eq(cls, sympy_eq, sampling_objs, reindexes=True):
         warnings.filterwarnings('ignore')
-        variables = tuple(sympy_eq.free_symbols)
+        variables = tuple(sorted(sympy_eq.free_symbols, key=lambda x: int(x.name[1:])))
         if reindexes:
             new_variables = tuple([Symbol(f'x{i}') for i in range(len(variables))])
             for old_variable, new_variable in zip(variables, new_variables):
