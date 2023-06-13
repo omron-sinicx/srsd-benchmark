@@ -11,7 +11,7 @@ As an evaluation metric, we also propose to use normalized edit distances betwee
 and the ground-truth equation trees. While existing metrics are either binary or errors between the target values and 
 an SR model's predicted values for a given input, normalized edit distances evaluate a sort of similarity between 
 the ground-truth and predicted equation trees. We have conducted experiments on our new SRSD datasets using five 
-state-of-the-art SR methods in SRBench and a simple baseline based on a recent Transformer architecture. 
+state-of-the-art SR methods in SRBench and a Transformer-based baseline. 
 The results show that we provide a more realistic performance evaluation and open up a new machine learning-based 
 approach for scientific discovery.
 
@@ -20,7 +20,7 @@ We used pipenv for a Python virtual environment.
 
 ```shell
 pipenv install --python 3.8
-mkdir resource/ 
+mkdir -p resource/datasets 
 ```
 
 You can also use conda or local Python environments.
@@ -125,73 +125,6 @@ pipenv run python eq_comparator.py \
 ```
 
 Add `-dec_idx` for DSO's estimated equations to decrement variable indices since DSR's variable indices start from 1 instead of 0.
-
-
-## Generate random equation datasets
-Run `random_dataset_generator.ipynb`  
-
-## Compare SRSD datasets with randomly generated datasets
-```shell
-pipenv run python dataset_comparator.py \
-  --src_eq ~/dataset/symbolic_regression/srsd-feynman_all/true_eq/ \
-  --src_tabular ~/dataset/symbolic_regression/srsd-feynman_all/test/ \
-  --dst_eq ~/dataset/symbolic_regression/bigram_nb-feynman_like_random_set/true_eq/ \
-  --dst_tabular ~/dataset/symbolic_regression/bigram_nb-feynman_like_random_set/train/
-```
-
-
-## Symbolic Transformer baseline
-
-### Pretraining
-You can skip this pretraining step if you use [our pretrained model checkpoint](https://github.com/omron-sinicx/srsd-benchmark/releases/tag/v0.1.0).
-
-```shell
-pipenv run python symbolic_regression.py --config ./configs/experiments/colab_pro/symbolic_transformer-pretraining.yaml --log ./logs/experiments/colab_pro/symbolic_transformer-pretraining.txt
-```
-
-### Normalized edit distance evaluation
-```shell
-
-pipenv run python symbolic_regression.py -test_only --config ./experiments/symbolic_transformer-srsd-feynman_easy.yaml --log ./log/experiments/symbolic_transformer-srsd-feynman_easy.txt
-pipenv run python symbolic_regression.py -test_only --config ./experiments/symbolic_transformer-srsd-feynman_medium.yaml --log ./log/experiments/symbolic_transformer-srsd-feynman_medium.txt
-pipenv run python symbolic_regression.py -test_only --config ./experiments/symbolic_transformer-srsd-feynman_hard.yaml --log ./log/experiments/symbolic_transformer-srsd-feynman_hard.txt
-```
-
-### R2-based accuracy evaluation
-```shell
-# Easy set
-pipenv run python symbolic_regression.py -test_only -estimate_coeff \
-  --config ./experiments/symbolic_transformer-srsd-feynman_easy.yaml \
-  --log ./log/experiments_estimate_coeff/symbolic_transformer-srsd-feynman_easy.txt
-pipenv run python r2_evaluator.py \
-  --est ./resource/pred_pickles/srsd-feynman_easy/ \
-  --test ./resource/datasets/srsd-feynman_easy/test/ \
-  --est_delim .pkl \
-  --test_delim .txt \
-  --r2thr 0.999
-
-# Medium set
-pipenv run python symbolic_regression.py -test_only -estimate_coeff \
-  --config ./experiments/symbolic_transformer-srsd-feynman_medium.yaml \
-  --log ./log/experiments_estimate_coeff/symbolic_transformer-srsd-feynman_medium.txt
-pipenv run python r2_evaluator.py \
-  --est ./resource/pred_pickles/srsd-feynman_medium/ \
-  --test ./resource/datasets/srsd-feynman_medium/test/ \
-  --est_delim .pkl \
-  --test_delim .txt \
-  --r2thr 0.999
-
-# Hard set
-pipenv run python symbolic_regression.py -test_only -estimate_coeff \
-  --config ./experiments/symbolic_transformer-srsd-feynman_hard.yaml \
-  --log ./log/experiments_estimate_coeff/symbolic_transformer-srsd-feynman_hard.txt
-pipenv run python r2_evaluator.py \
-  --est ./resource/pred_pickles/srsd-feynman_hard/ \
-  --test ./resource/datasets/srsd-feynman_hard/test/ \
-  --est_delim .pkl \
-  --test_delim .txt \
-  --r2thr 0.999
-```
 
 ## Citation
 [[Preprint](https://arxiv.org/abs/2206.10540)]  
