@@ -38,6 +38,11 @@ Our SRSD datasets are publicly available at Hugging Face Dataset repositories:
 - [Medium set](https://huggingface.co/datasets/yoshitomo-matsubara/srsd-feynman_medium)
 - [Hard set](https://huggingface.co/datasets/yoshitomo-matsubara/srsd-feynman_hard)
   
+We also created another 120 SRSD datasets by introducing dummy variables to the 120 SRSD datasets.
+- [Easy set w/ dummy variables](https://huggingface.co/datasets/yoshitomo-matsubara/srsd-feynman_easy_dummy)
+- [Medium set w/ dummy variables](https://huggingface.co/datasets/yoshitomo-matsubara/srsd-feynman_medium_dummy)
+- [Hard set w/ dummy variables](https://huggingface.co/datasets/yoshitomo-matsubara/srsd-feynman_hard_dummy)
+  
 Download and store the datasets at `./resource/datasets/`
 
 If you want to re-generate the SRSD datasets,
@@ -54,6 +59,16 @@ Also, run the following command for merging all the sets
 cp ./resource/datasets/srsd-feynman_easy/ ./resource/datasets/srsd-feynman_all/ -r
 cp ./resource/datasets/srsd-feynman_medium/ ./resource/datasets/srsd-feynman_all/ -r
 cp ./resource/datasets/srsd-feynman_hard/ ./resource/datasets/srsd-feynman_all/ -r
+```
+
+
+### Introduce dummy variables
+To re-introduce dummy variables (columns) to the datasets, run the following commands:
+
+```shell
+pipenv run python dummy_column_mixer.py --input ./resource/datasets/srsd/easy_set/ --output ./resource/datasets/srsd/easy_set_dummy/
+pipenv run python dummy_column_mixer.py --input ./resource/datasets/srsd/medium_set/ --output ./resource/datasets/srsd/medium_set_dummy/
+pipenv run python dummy_column_mixer.py --input ./resource/datasets/srsd/hard_set/ --output ./resource/datasets/srsd/hard_set_dummy/
 ```
 
 ### Convert SRSD datasets for DSR
@@ -131,7 +146,7 @@ Add `-dec_idx` for DSO's estimated equations to decrement variable indices since
 ```bibtex
 @article{matsubara2022rethinking,
   title={Rethinking Symbolic Regression Datasets and Benchmarks for Scientific Discovery},
-  author={Matsubara, Yoshitomo and Chiba, Naoya and Igarashi, Ryo and Tatsunori, Taniai and Ushiku, Yoshitaka},
+  author={Matsubara, Yoshitomo and Chiba, Naoya and Igarashi, Ryo and Ushiku, Yoshitaka},
   journal={arXiv preprint arXiv:2206.10540},
   year={2022}
 }
