@@ -20,7 +20,7 @@ We used pipenv for a Python virtual environment.
 
 ```shell
 pipenv install --python 3.8
-mkdir resource/ 
+mkdir -p resource/datasets 
 ```
 
 You can also use conda or local Python environments.
