@@ -1,19 +1,17 @@
 # Rethinking Symbolic Regression Datasets and Benchmarks for Scientific Discovery
 This is the official code repository of ["Rethinking Symbolic Regression Datasets and Benchmarks for Scientific Discovery"](https://github.com/omron-sinicx/srsd-benchmark#citation). 
-This work revisits datasets and evaluation criteria for Symbolic Regression, a task of expressing given data 
-using mathematical equations, specifically focused on its potential for scientific discovery. 
-Focused on a set of formulas used in the existing datasets based on Feynman Lectures on Physics, 
-we recreate 120 datasets to discuss the performance of symbolic regression for scientific discovery (SRSD). 
-For each of the 120 SRSD datasets, we carefully review the properties of the formula and its variables 
-to design reasonably realistic sampling range of values so that our new SRSD datasets can be used for 
+This work revisits datasets and evaluation criteria for Symbolic Regression (SR), specifically focused on its potential 
+for scientific discovery. Focused on a set of formulas used in the existing datasets based on 
+Feynman Lectures on Physics, we recreate 120 datasets to discuss the performance of symbolic regression for 
+scientific discovery (SRSD). For each of the 120 SRSD datasets, we carefully review the properties of the formula and 
+its variables to design reasonably realistic sampling ranges of values so that our new SRSD datasets can be used for 
 evaluating the potential of SRSD such as whether or not an SR method can (re)discover physical laws from such datasets. 
-As an evaluation metric, we also propose to use normalized edit distances between a predicted equation 
-and the ground-truth equation trees. While existing metrics are either binary or errors between the target values and 
-an SR model's predicted values for a given input, normalized edit distances evaluate a sort of similarity between 
-the ground-truth and predicted equation trees. We have conducted experiments on our new SRSD datasets using five 
-state-of-the-art SR methods in SRBench and a Transformer-based baseline. 
-The results show that we provide a more realistic performance evaluation and open up a new machine learning-based 
-approach for scientific discovery.
+We also create another 120 datasets that contain dummy variables to examine whether SR methods can choose necessary 
+variables only. Besides, we propose to use normalized edit distances (NED) between a predicted equation and the true 
+equation trees for addressing a critical issue that existing SR metrics are either binary or errors between the target 
+values and an SR model’s predicted values for a given input. We conduct experiments on our new SRSD datasets using six 
+SR methods. The experimental results show that we provide a more realistic performance evaluation, and our user study 
+shows that the NED correlates with human judges significantly more than an existing SR metric.
 
 ## Setup 
 We used pipenv for a Python virtual environment.
@@ -38,6 +36,11 @@ Our SRSD datasets are publicly available at Hugging Face Dataset repositories:
 - [Medium set](https://huggingface.co/datasets/yoshitomo-matsubara/srsd-feynman_medium)
 - [Hard set](https://huggingface.co/datasets/yoshitomo-matsubara/srsd-feynman_hard)
   
+We also created another 120 SRSD datasets by introducing dummy variables to the 120 SRSD datasets.
+- [Easy set w/ dummy variables](https://huggingface.co/datasets/yoshitomo-matsubara/srsd-feynman_easy_dummy)
+- [Medium set w/ dummy variables](https://huggingface.co/datasets/yoshitomo-matsubara/srsd-feynman_medium_dummy)
+- [Hard set w/ dummy variables](https://huggingface.co/datasets/yoshitomo-matsubara/srsd-feynman_hard_dummy)
+  
 Download and store the datasets at `./resource/datasets/`
 
 If you want to re-generate the SRSD datasets,
@@ -54,6 +57,16 @@ Also, run the following command for merging all the sets
 cp ./resource/datasets/srsd-feynman_easy/ ./resource/datasets/srsd-feynman_all/ -r
 cp ./resource/datasets/srsd-feynman_medium/ ./resource/datasets/srsd-feynman_all/ -r
 cp ./resource/datasets/srsd-feynman_hard/ ./resource/datasets/srsd-feynman_all/ -r
+```
+
+
+### Introduce dummy variables
+To re-introduce dummy variables (columns) to the datasets, run the following commands:
+
+```shell
+pipenv run python dummy_column_mixer.py --input ./resource/datasets/srsd/easy_set/ --output ./resource/datasets/srsd/easy_set_dummy/
+pipenv run python dummy_column_mixer.py --input ./resource/datasets/srsd/medium_set/ --output ./resource/datasets/srsd/medium_set_dummy/
+pipenv run python dummy_column_mixer.py --input ./resource/datasets/srsd/hard_set/ --output ./resource/datasets/srsd/hard_set_dummy/
 ```
 
 ### Convert SRSD datasets for DSR
@@ -131,7 +144,7 @@ Add `-dec_idx` for DSO's estimated equations to decrement variable indices since
 ```bibtex
 @article{matsubara2022rethinking,
   title={Rethinking Symbolic Regression Datasets and Benchmarks for Scientific Discovery},
-  author={Matsubara, Yoshitomo and Chiba, Naoya and Igarashi, Ryo and Tatsunori, Taniai and Ushiku, Yoshitaka},
+  author={Matsubara, Yoshitomo and Chiba, Naoya and Igarashi, Ryo and Ushiku, Yoshitaka},
   journal={arXiv preprint arXiv:2206.10540},
   year={2022}
 }

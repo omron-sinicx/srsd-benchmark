@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 numpy = "*"
 torchdistill = ">=0.3.2"
+torchvision = "==0.13.1"
 pandas = "*"
 jinja2 = "*"
 sympy = ">=1.10"
