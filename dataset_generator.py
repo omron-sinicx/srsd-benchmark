@@ -1,7 +1,10 @@
 import argparse
+import json
 import os
 import pickle
+
 import numpy as np
+from sympy import srepr
 from torchdistill.common.file_util import make_parent_dirs
 from torchdistill.common.yaml_util import load_yaml_file
 
@@ -15,6 +18,7 @@ def get_argparser():
     parser.add_argument('--train', type=float, default=8.0, help='default training ratio')
     parser.add_argument('--val', type=float, default=1.0, help='default validation ratio')
     parser.add_argument('--test', type=float, default=1.0, help='default test ratio')
+    parser.add_argument('--eq', help='output json file path for equations')
     return parser
 
 
@@ -30,7 +34,7 @@ def split_dataset(dataset, train_ratio, val_ratio, test_ratio):
     val_dataset = dataset[num_train_samples:num_train_samples + num_val_samples] if num_val_samples > 0 else None
     test_dataset = dataset[-num_test_samples:] if num_test_samples > 0 else None
     return train_dataset, val_dataset, test_dataset
-    
+
 
 def generate_dataset(dataset_name, dataset_config, default_train_ratio, default_val_ratio, default_test_ratio):
     print('\n====================================')
@@ -74,6 +78,7 @@ def generate_dataset(dataset_name, dataset_config, default_train_ratio, default_
     make_parent_dirs(pickle_file_path)
     with open(pickle_file_path, 'wb') as fp:
         pickle.dump(eq_instance.sympy_eq, fp)
+    return eq_name, eq_instance.sympy_eq
 
 
 def main(args):
@@ -92,8 +97,24 @@ def main(args):
     else:
         raise TypeError(f'config type `{type(config)}` is not expected')
 
+    eq_dict = dict()
     for dataset_key, dataset_config in key_config_pairs:
-        generate_dataset(dataset_key, dataset_config, default_train_ratio, default_val_ratio, default_test_ratio)
+        eq_name, sympy_eq = \
+            generate_dataset(dataset_key, dataset_config, default_train_ratio, default_val_ratio, default_test_ratio)
+        sympy_eq_str = repr(sympy_eq)
+        sympy_eq_srepr = srepr(sympy_eq)
+        eq_dict[eq_name] = {
+            'dataset_class_key': dataset_key,
+            'sympy_eq_str': sympy_eq_str,
+            'sympy_eq_srepr': sympy_eq_srepr
+        }
+
+    eq_file_path = args.eq
+    if eq_file_path is not None:
+        eq_file_path = os.path.expanduser(eq_file_path)
+        make_parent_dirs(eq_file_path)
+        with open(eq_file_path, 'w') as fp:
+            json.dump(eq_dict, fp)
 
 
 if __name__ == '__main__':
