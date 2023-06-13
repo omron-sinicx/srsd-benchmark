@@ -8,6 +8,7 @@ To run the existing baselines we chose, follow the instruction in each directory
 - [AFP-FE (same dir as AFP)](./ellyn)
 - [AI Feynman](./ai_feynman2)
 - [DSR](./dso)
+- [E2E](./e2e)
 
 Once you finish training and obtaining the estimated equations, you will follow the evaluation instruction 
 [here](https://github.com/omron-sinicx/srsd-benchmark#compute-edit-distance-between-estimated-and-ground-truth-equations)
