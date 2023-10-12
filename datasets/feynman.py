@@ -67,7 +67,7 @@ class FeynmanICh6Eq20a(KnownEquation):
     def __init__(self, sampling_objs=None):
         if sampling_objs is None:
             sampling_objs = [DefaultSampling(1.0e-1, 1.0e1)]
-        
+
         super().__init__(num_vars=1, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = sympy.exp(-x[0] ** 2 / 2) / sympy.sqrt(2 * sympy.pi)
@@ -97,7 +97,7 @@ class FeynmanICh6Eq20b(KnownEquation):
                 DefaultSampling(1.0e-1, 1.0e1), DefaultSampling(1.0e-1, 1.0e1),
                 DefaultSampling(1.0e-1, 1.0e1, uses_negative=False)
             ]
-        
+
         super().__init__(num_vars=3, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = sympy.exp(-((x[0] - x[1]) / x[2]) ** 2 / 2) / sympy.sqrt(2 * sympy.pi)
@@ -127,7 +127,7 @@ class FeynmanICh8Eq14(KnownEquation):
                 DefaultSampling(1.0e-1, 1.0e1), DefaultSampling(1.0e-1, 1.0e1),
                 DefaultSampling(1.0e-1, 1.0e1), DefaultSampling(1.0e-1, 1.0e1)
             ]
-        
+
         super().__init__(num_vars=4, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = sympy.sqrt((x[0] - x[1]) ** 2 + (x[2] - x[3]) ** 2)
@@ -160,12 +160,12 @@ class FeynmanICh9Eq18(KnownEquation):
         if sampling_objs is None:
             # Consider Cavendish experiment
             sampling_objs = [
-                DefaultSampling(1.0e-1, 1.0e1, uses_negative=False),
-                DefaultSampling(1.0e-1, 1.0e1, uses_negative=False),
-                DefaultSampling(1.0e-1, 1.0e1), DefaultSampling(1.0e-1, 1.0e1), DefaultSampling(1.0e-1, 1.0e1),
-                DefaultSampling(1.0e-1, 1.0e1), DefaultSampling(1.0e-1, 1.0e1), DefaultSampling(1.0e-1, 1.0e1)
+                DefaultSampling(1.0, 1.0e3, uses_negative=False),
+                DefaultSampling(1.0, 1.0e3, uses_negative=False),
+                DefaultSampling(1.0, 1.0e1), DefaultSampling(1.0, 1.0e1), DefaultSampling(1.0, 1.0e1),
+                DefaultSampling(1.0, 1.0e1), DefaultSampling(1.0, 1.0e1), DefaultSampling(1.0, 1.0e1)
             ]
-        
+
         super().__init__(num_vars=8, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = \
@@ -196,7 +196,7 @@ class FeynmanICh10Eq7(KnownEquation):
                 DefaultSampling(1.0e-1, 1.0e1, uses_negative=False),
                 DefaultSampling(1.0e5, 1.0e8, uses_negative=False)
             ]
-        
+
         super().__init__(num_vars=2, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = x[0] / sympy.sqrt(1 - x[1] ** 2 / SPEED_OF_LIGHT ** 2)
@@ -228,7 +228,7 @@ class FeynmanICh11Eq19(KnownEquation):
                 DefaultSampling(1.0e-1, 1.0e1), DefaultSampling(1.0e-1, 1.0e1), DefaultSampling(1.0e-1, 1.0e1),
                 DefaultSampling(1.0e-1, 1.0e1), DefaultSampling(1.0e-1, 1.0e1), DefaultSampling(1.0e-1, 1.0e1)
             ]
-        
+
         super().__init__(num_vars=6, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = x[0] * x[1] + x[2] * x[3] + x[4] * x[5]
@@ -256,7 +256,7 @@ class FeynmanICh12Eq1(KnownEquation):
                 DefaultSampling(1.0e-2, 1.0, uses_negative=False),
                 DefaultSampling(1.0e-2, 1.0, uses_negative=False)
             ]
-        
+
         super().__init__(num_vars=2, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = x[0] * x[1]
@@ -286,7 +286,7 @@ class FeynmanICh12Eq2(KnownEquation):
                 DefaultSampling(1.0e-1, 1.0e1), DefaultSampling(1.0e-1, 1.0e1),
                 DefaultSampling(1.0e-1, 1.0e1, uses_negative=False)
             ]
-        
+
         super().__init__(num_vars=3, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = x[0] * x[1] * x[2] / (4 * sympy.pi * ELECTRIC_CONSTANT * x[2] ** 3)
@@ -312,7 +312,7 @@ class FeynmanICh12Eq4(KnownEquation):
     def __init__(self, sampling_objs=None):
         if sampling_objs is None:
             sampling_objs = [DefaultSampling(1.0e-1, 1.0e1), DefaultSampling(1.0e-1, 1.0e1, uses_negative=False)]
-        
+
         super().__init__(num_vars=2, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = x[0] * x[1] / (4 * sympy.pi * ELECTRIC_CONSTANT * x[1] ** 3)
@@ -337,7 +337,7 @@ class FeynmanICh12Eq5(KnownEquation):
     def __init__(self, sampling_objs=None):
         if sampling_objs is None:
             sampling_objs = [DefaultSampling(1.0e-1, 1.0e1), DefaultSampling(1.0e-1, 1.0e1)]
-        
+
         super().__init__(num_vars=2, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = x[0] * x[1]
@@ -368,9 +368,9 @@ class FeynmanICh12Eq11(KnownEquation):
                 DefaultSampling(1.0e-1, 1.0e1), DefaultSampling(1.0e-1, 1.0e1, uses_negative=False),
                 DefaultSampling(1.0e-1, 1.0e1, uses_negative=False),
                 DefaultSampling(1.0e-1, 1.0e1, uses_negative=False),
-                SimpleSampling(0.0, 2 * np.pi, uses_negative=False)
+                SimpleSampling(0.0, np.pi / 2, uses_negative=False)
             ]
-        
+
         super().__init__(num_vars=5, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = x[0] * (x[1] + x[2] * x[3] * sympy.sin(x[4]))
@@ -400,7 +400,7 @@ class FeynmanICh13Eq4(KnownEquation):
                 DefaultSampling(1.0e-1, 1.0e1, uses_negative=False), DefaultSampling(1.0e-1, 1.0e1),
                 DefaultSampling(1.0e-1, 1.0e1), DefaultSampling(1.0e-1, 1.0e1)
             ]
-        
+
         super().__init__(num_vars=4, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = 1 / 2 * x[0] * (x[1] ** 2 + x[2] ** 2 + x[3] ** 2)
@@ -432,7 +432,7 @@ class FeynmanICh13Eq12(KnownEquation):
                 DefaultSampling(1.0e-2, 1.0, uses_negative=False), DefaultSampling(1.0e-2, 1.0, uses_negative=False),
                 DefaultSampling(1.0e-2, 1.0, uses_negative=False), DefaultSampling(1.0e-2, 1.0, uses_negative=False)
             ]
-        
+
         super().__init__(num_vars=4, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = GRAVITATIONAL_CONSTANT * x[0] * x[1] * (1 / x[2] - 1 / x[3])
@@ -457,7 +457,7 @@ class FeynmanICh14Eq3(KnownEquation):
     def __init__(self, sampling_objs=None):
         if sampling_objs is None:
             sampling_objs = [DefaultSampling(1.0e-2, 1.0, uses_negative=False), DefaultSampling(1.0e-2, 1.0)]
-        
+
         super().__init__(num_vars=2, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = GRAVITATIONAL_ACCELERATION * x[0] * x[1]
@@ -482,7 +482,7 @@ class FeynmanICh14Eq4(KnownEquation):
     def __init__(self, sampling_objs=None):
         if sampling_objs is None:
             sampling_objs = [DefaultSampling(1.0e2, 1.0e4, uses_negative=False), DefaultSampling(1.0e-2, 1.0)]
-        
+
         super().__init__(num_vars=2, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = 1 / 2 * x[0] * x[1] ** 2
@@ -508,7 +508,7 @@ class FeynmanICh15Eq10(KnownEquation):
     def __init__(self, sampling_objs=None):
         if sampling_objs is None:
             sampling_objs = [DefaultSampling(1.0e-2, 1.0, uses_negative=False), DefaultSampling(1.0e5, 1.0e7)]
-        
+
         super().__init__(num_vars=2, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = x[0] * x[1] / sympy.sqrt(1 - x[1] ** 2 / SPEED_OF_LIGHT ** 2)
@@ -538,7 +538,7 @@ class FeynmanICh15Eq3t(KnownEquation):
                 DefaultSampling(1.0e-6, 1.0e-4, uses_negative=False),
                 DefaultSampling(1.0e5, 1.0e7), DefaultSampling(1.0, 1.0e2)
             ]
-        
+
         super().__init__(num_vars=3, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = (x[0] - x[1] * x[2] / SPEED_OF_LIGHT ** 2) / sympy.sqrt(1 - x[1] ** 2 / SPEED_OF_LIGHT ** 2)
@@ -568,7 +568,7 @@ class FeynmanICh15Eq3x(KnownEquation):
                 DefaultSampling(1.0, 1.0e2), DefaultSampling(1.0e6, 1.0e8),
                 DefaultSampling(1.0e-6, 1.0e-4, uses_negative=False)
             ]
-        
+
         super().__init__(num_vars=3, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = (x[0] - x[1] * x[2]) / sympy.sqrt(1 - x[1] ** 2 / SPEED_OF_LIGHT ** 2)
@@ -594,7 +594,7 @@ class FeynmanICh16Eq6(KnownEquation):
     def __init__(self, sampling_objs=None):
         if sampling_objs is None:
             sampling_objs = [DefaultSampling(1.0e6, 1.0e8), DefaultSampling(1.0e6, 1.0e8)]
-        
+
         super().__init__(num_vars=2, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = (x[0] + x[1]) / (1 + x[0] * x[1] / SPEED_OF_LIGHT ** 2)
@@ -715,7 +715,7 @@ class FeynmanICh24Eq6(KnownEquation):
                 DefaultSampling(1.0e-1, 1.0e1, uses_negative=False), DefaultSampling(1.0e-1, 1.0e1),
                 DefaultSampling(1.0e-1, 1.0e1), DefaultSampling(1.0e-1, 1.0e1)
             ]
-        
+
         super().__init__(num_vars=4, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = 1 / 2 * x[0] * (x[1] ** 2 + x[2] ** 2) * 1/2 * x[3] ** 2
@@ -768,7 +768,7 @@ class FeynmanICh26Eq2(KnownEquation):
     def __init__(self, sampling_objs=None):
         if sampling_objs is None:
             sampling_objs = [
-                SimpleSampling(0, 2 * np.pi, uses_negative=False), SimpleSampling(0, 2 * np.pi, uses_negative=False)
+                SimpleSampling(0, np.pi / 2, uses_negative=False), SimpleSampling(0, np.pi / 2, uses_negative=False)
             ]
 
         super().__init__(num_vars=2, sampling_objs=sampling_objs)
@@ -800,7 +800,7 @@ class FeynmanICh27Eq6(KnownEquation):
             sampling_objs = [
                 DefaultSampling(1.0e-3, 1.0e-1, uses_negative=False),
                 DefaultSampling(1.0e-1, 1.0e1, uses_negative=False),
-                DefaultSampling(1.0e-3, 1.0e1, uses_negative=False)
+                DefaultSampling(1.0e-3, 1.0e-1, uses_negative=False)
             ]
 
         super().__init__(num_vars=3, sampling_objs=sampling_objs)
@@ -919,9 +919,9 @@ class FeynmanICh30Eq5(KnownEquation):
         if sampling_objs is None:
             sampling_objs = [
                 DefaultSampling(1.0e-11, 1.0e-9, uses_negative=False), IntegerSampling(1.0, 1.0e2, uses_negative=False),
-                SimpleSampling(0, 2 * np.pi, uses_negative=False)
+                SimpleSampling(0, np.pi / 2, uses_negative=False)
             ]
-        
+
         super().__init__(num_vars=3, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = x[0] / (x[1] * sympy.sin(x[2]))
@@ -966,10 +966,10 @@ class FeynmanICh32Eq17(KnownEquation):
     - Raw: (1 / 2 * 8.854e-12 * 2.99792458e8 * Ef ** 2) * (8 * pi * r ** 2 / 3) * (omega ** 4 / (omega ** 2 - omega_0 ** 2) ** 2)
     - Num. Vars: 4
     - Vars:
-        - x[0]: Ef (float, positive)
+        - x[0]: Ef (float)
         - x[1]: r (float, positive)
-        - x[2]: omega (float, positive)
-        - x[3]: omega_0 (float, positive)
+        - x[2]: omega (float)
+        - x[3]: omega_0 (float)
     - Constraints:
         - x[2] ** 2 - x[3] ** 2 != 0
     """
@@ -1121,7 +1121,7 @@ class FeynmanICh37Eq4(KnownEquation):
                 DefaultSampling(1.0e-3, 1.0e-1, uses_negative=False),
                 DefaultSampling(1.0e-3, 1.0e-1, uses_negative=False), SimpleSampling(0, 2 * np.pi, uses_negative=False)
             ]
-        
+
         super().__init__(num_vars=3, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = x[0] + x[1] + 2 * sympy.sqrt(x[0] * x[1]) * sympy.cos(x[2])
@@ -1149,7 +1149,7 @@ class FeynmanICh38Eq12(KnownEquation):
         if sampling_objs is None:
             sampling_objs = [
                 DefaultSampling(1.0e-28, 1.0e-26, uses_negative=False),
-                DefaultSampling(1.0e-11, 1.0e-9)
+                DefaultSampling(1.0e-11, 1.0e-9, uses_negative=False)
             ]
 
         super().__init__(num_vars=2, sampling_objs=sampling_objs)
@@ -1178,7 +1178,7 @@ class FeynmanICh39Eq10(KnownEquation):
             sampling_objs = [
                 DefaultSampling(1.0e4, 1.0e6, uses_negative=False), DefaultSampling(1.0e-5, 1.0e-3, uses_negative=False)
             ]
-        
+
         super().__init__(num_vars=2, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = 3 / 2 * x[0] * x[1]
@@ -1417,7 +1417,7 @@ class FeynmanICh44Eq4(KnownEquation):
     def __init__(self, sampling_objs=None):
         if sampling_objs is None:
             sampling_objs = [
-                DefaultSampling(10e23, 10e25, uses_negative=False), DefaultSampling(1.0e1, 1.0e3, uses_negative=False),
+                DefaultSampling(10e24, 10e26, uses_negative=False), DefaultSampling(1.0e1, 1.0e3, uses_negative=False),
                 DefaultSampling(1.0e-5, 1.0e-3, uses_negative=False),
                 DefaultSampling(1.0e-5, 1.0e-3, uses_negative=False)
             ]
@@ -2263,7 +2263,7 @@ class FeynmanIICh34Eq11(KnownEquation):
                 DefaultSampling(1.0e-11, 1.0e-9), DefaultSampling(1.0e-9, 1.0e-7),
                 DefaultSampling(1.0e-30, 1.0e-28, uses_negative=False)
             ]
-            
+
         super().__init__(num_vars=4, sampling_objs=sampling_objs)
         x = self.x
         self.sympy_eq = x[0] * x[1] * x[2] / (2 * x[3])
@@ -2404,7 +2404,7 @@ class FeynmanIICh36Eq38(KnownEquation):
         - x[1]: H (float)
         - x[2]: T (float, positive)
         - x[3]: alpha (float, positive)
-        - x[4]: M (integer -> real due to its order, positive) 
+        - x[4]: M (integer -> real due to its order, positive)
     - Constraints:
         - x[2] != 0
     """
@@ -2476,7 +2476,7 @@ class FeynmanIICh38Eq3(KnownEquation):
             sampling_objs = [
                 DefaultSampling(1.0e-1, 1.0e1, uses_negative=False),
                 DefaultSampling(1.0e-4, 1.0e-2, uses_negative=False),
-                DefaultSampling(1.0e-3, 1.0e-1), DefaultSampling(1.0e-2, 1.0, uses_negative=False) 
+                DefaultSampling(1.0e-3, 1.0e-1), DefaultSampling(1.0e-2, 1.0, uses_negative=False)
             ]
 
         super().__init__(num_vars=4, sampling_objs=sampling_objs)
@@ -2647,7 +2647,7 @@ class FeynmanIIICh9Eq52(KnownEquation):
     def __init__(self, sampling_objs=None):
         if sampling_objs is None:
             sampling_objs = [
-                DefaultSampling(1.0e-22, 1.0e-20), DefaultSampling(1.0e1, 1.0e3), 
+                DefaultSampling(1.0e-22, 1.0e-20), DefaultSampling(1.0e1, 1.0e3),
                 DefaultSampling(1.0e-18, 1.0e-16, uses_negative=False),
                 DefaultSampling(1.0e8, 1.0e10, uses_negative=False), DefaultSampling(1.0e8, 1.0e10, uses_negative=False)
             ]
@@ -2943,7 +2943,7 @@ class FeynmanIIICh21Eq20(KnownEquation):
     def __init__(self, sampling_objs=None):
         if sampling_objs is None:
             sampling_objs = [
-                DefaultSampling(1.0e27, 1.0e29, uses_positive=False),
+                DefaultSampling(1.0e-29, 1.0e-27, uses_positive=False),
                 DefaultSampling(1.0e-11, 1.0e-9, uses_positive=False),
                 DefaultSampling(1.0e-3, 1.0e-1), DefaultSampling(1.0e-30, 1.0e-28, uses_negative=False)
             ]
@@ -3134,7 +3134,7 @@ class FeynmanBonus6(KnownEquation):
     """
     - Equation: 3.99 Goldstein
     - Raw: sqrt(1 + 2 * epsilon ** 2 * E_n * L ** 2 / (m * (Z_1 * Z_2 * q ** 2) ** 2))
-    - Python: 
+    - Python:
     - Num. Vars: 7
     - Vars:
         - x[0]: epsilon (float)
@@ -3190,8 +3190,8 @@ class FeynmanBonus7(KnownEquation):
     def __init__(self, sampling_objs=None):
         if sampling_objs is None:
             sampling_objs = [
-                DefaultSampling(1.0e-27, 1.0e-25, uses_negative=False), IntegerSampling(-1.0, 1.0),
-                DefaultSampling(1.0e8, 1.0e10, uses_negative=False)
+                DefaultSampling(1.0e-28, 1.0e-26, uses_negative=False), IntegerSampling(-1.0, 2.0),
+                DefaultSampling(1.0e25, 1.0e27, uses_negative=False)
             ]
 
         super().__init__(num_vars=3, sampling_objs=sampling_objs)
@@ -3262,7 +3262,7 @@ class FeynmanBonus9(KnownEquation):
 @register_feynman_eq_class
 class FeynmanBonus10(KnownEquation):
     """
-    - Equation: Relativistic aberation
+    - Equation: Relativistic aberration
     - Raw: (cos(theta2) - v / 2.99792458e8) / (1 - v / 2.99792458e8 * cos(theta2))
     - Num. Vars: 2
     - Vars:
@@ -3278,8 +3278,8 @@ class FeynmanBonus10(KnownEquation):
     def __init__(self, sampling_objs=None):
         if sampling_objs is None:
             sampling_objs = [
-                SimpleSampling(0, 2 * np.pi, uses_negative=False),
-                DefaultSampling(1.0e5, 1.0e7, uses_negative=False)
+                SimpleSampling(0, np.pi, uses_negative=False),
+                DefaultSampling(1.0e6, 1.0e8)
             ]
 
         super().__init__(num_vars=2, sampling_objs=sampling_objs)
@@ -3574,7 +3574,7 @@ class FeynmanBonus19(KnownEquation):
         if sampling_objs is None:
             sampling_objs = [
                 DefaultSampling(1.0e1, 1.0e3), DefaultSampling(1.0e8, 1.0e10, uses_negative=False),
-                DefaultSampling(1.0, 1.0e2), SimpleSampling(-10, 10)
+                DefaultSampling(1.0, 1.0e2, uses_negative=False), SimpleSampling(-10, 10)
             ]
 
         super().__init__(num_vars=4, sampling_objs=sampling_objs)
