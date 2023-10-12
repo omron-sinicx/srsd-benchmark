@@ -25,6 +25,8 @@ singularity build --fakeroot dso.sif dso.def
 ## Run experiments
 
 ### Docker user
+
+DSR  
 ```shell
 for srsd_category in easy medium hard; do
   echo "[SRSD category: ${srsd_category}]"
@@ -38,16 +40,43 @@ for srsd_category in easy medium hard; do
 done
 ```
 
+uDSR  
+```shell
+for srsd_category in easy medium hard; do
+  echo "[SRSD category: ${srsd_category}]"
+  for filepath in /resource/datasets/srsd-feynman_${srsd_category}/train/*; do
+    echo "[Current file: ${filepath}]"
+    for i in {1..10}; do
+	  python -m dso.run ./configs/config_w_poly{i}.json --b ${filepath} --seed ${i}
+	done
+  done
+done
+```
+
 ### Singularity user
 
+DSR  
 ```shell
 for srsd_category in easy medium hard; do
   echo "[SRSD category: ${srsd_category}]"
   for filepath in ./resource/datasets/srsd-feynman_${srsd_category}/train/*; do
     echo "[Current file: ${filepath}]"
     for i in {1..5}; do
-	  singularity exec --nv ./dso.sif python -m dso.run ./configs/config_wo_const${i}.json --b ${filepath} --seed ${i}
-	  singularity exec --nv ./dso.sif python -m dso.run ./configs/config_w_const${i}.json --b ${filepath} --seed ${i}
+	  singularity exec --nv ./dso.sif python -m dso.run ./configs/dsr/config_wo_const${i}.json --b ${filepath} --seed ${i}
+	  singularity exec --nv ./dso.sif python -m dso.run ./configs/dsr/config_w_const${i}.json --b ${filepath} --seed ${i}
+	done
+  done
+done
+```
+
+uDSR  
+```shell
+for srsd_category in easy medium hard; do
+  echo "[SRSD category: ${srsd_category}]"
+  for filepath in ./resource/datasets/srsd-feynman_${srsd_category}/train/*; do
+    echo "[Current file: ${filepath}]"
+    for i in {1..10}; do
+	  singularity exec --nv ./dso.sif python -m dso.run ./configs/udsr/config_w_poly{i}.json --b ${filepath} --seed ${i}
 	done
   done
 done
