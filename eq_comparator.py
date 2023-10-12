@@ -66,6 +66,7 @@ def load_eq_as_tree(pickle_file_path, decrements_idx=False, prints=True):
         # Consistently reorder variables in args
         eq_sympy = sympy.sympify(str(eq_sympy))
         eq_sympy = eq_sympy.subs(sympy.pi, sympy.pi.evalf()).evalf().factor().simplify().subs(1.0, 1)
+        eq_sympy = sympy.sympify(str(eq_sympy))
     except TypeError as te:
         if prints:
             print(te)
