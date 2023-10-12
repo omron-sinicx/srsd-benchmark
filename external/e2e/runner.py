@@ -14,7 +14,7 @@ def get_argparser():
     parser = argparse.ArgumentParser(description='End-to-End Symbolic Regression with Transformer baseline runner')
     parser.add_argument('--ckpt', required=True, help='ckpt file path')
     parser.add_argument('--train', help='training file path')
-    parser.add_argument('--val', help='training file path')
+    parser.add_argument('--val', help='validation file path')
     parser.add_argument('--test', required=True, help='test file path')
     parser.add_argument('--out', required=True, help='output file name (dir path should be specified in config file)')
     return parser
