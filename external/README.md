@@ -9,6 +9,8 @@ To run the existing baselines we chose, follow the instruction in each directory
 - [AI Feynman](./ai_feynman2)
 - [DSR](./dso)
 - [E2E](./e2e)
+- [uDSR (same dir as DSR)](./dso)
+- [PySR](./pysr)
 
 Once you finish training and obtaining the estimated equations, you will follow the evaluation instruction 
 [here](https://github.com/omron-sinicx/srsd-benchmark#compute-edit-distance-between-estimated-and-ground-truth-equations)
