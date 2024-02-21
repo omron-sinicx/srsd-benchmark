@@ -100,7 +100,7 @@ class FeynmanICh6Eq20b(KnownEquation):
 
         super().__init__(num_vars=3, sampling_objs=sampling_objs)
         x = self.x
-        self.sympy_eq = sympy.exp(-((x[0] - x[1]) / x[2]) ** 2 / 2) / sympy.sqrt(2 * sympy.pi)
+        self.sympy_eq = sympy.exp(-((x[0] - x[1]) / x[2]) ** 2 / 2) / (sympy.sqrt(2 * sympy.pi) * x[2])
 
     def eq_func(self, x):
         return np.exp(-((x[0] - x[1]) / x[2]) ** 2 / 2)/(np.sqrt(2 * np.pi) * x[2])
