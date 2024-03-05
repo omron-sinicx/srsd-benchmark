@@ -13,6 +13,8 @@ values and an SR model’s predicted values for a given input. We conduct experi
 SR methods. The experimental results show that we provide a more realistic performance evaluation, and our user study 
 shows that the NED correlates with human judges significantly more than an existing SR metric.
 
+[![YouTube](https://img.youtube.com/vi/MmeOXuUUAW0/0.jpg)](https://www.youtube.com/watch?v=MmeOXuUUAW0)
+
 ## Setup 
 We used pipenv for a Python virtual environment.
 
@@ -140,12 +142,13 @@ pipenv run python eq_comparator.py \
 Add `-dec_idx` for DSO's estimated equations to decrement variable indices since DSR's variable indices start from 1 instead of 0.
 
 ## Citation
-[[Preprint](https://arxiv.org/abs/2206.10540)]  
+[[OpenReview](https://openreview.net/forum?id=qrUdrXsiXX)] [[Video](https://www.youtube.com/watch?v=MmeOXuUUAW0)] [[Preprint](https://arxiv.org/abs/2206.10540)]  
 ```bibtex
-@article{matsubara2022rethinking,
+@article{matsubara2024rethinking,
   title={Rethinking Symbolic Regression Datasets and Benchmarks for Scientific Discovery},
   author={Matsubara, Yoshitomo and Chiba, Naoya and Igarashi, Ryo and Ushiku, Yoshitaka},
-  journal={arXiv preprint arXiv:2206.10540},
-  year={2022}
+  journal={Journal of Data-centric Machine Learning Research},
+  year={2024},
+  url={https://openreview.net/forum?id=qrUdrXsiXX}
 }
 ```
